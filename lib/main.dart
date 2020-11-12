@@ -1,26 +1,35 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'models/item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app/bloc/item.bloc.detegate.dart';
+import 'package:todo_app/screens/home/home.screen.dart';
 
-import 'package:todo_app/screens/home/home_screen.dart';
+import 'bloc/item.bloc.dart';
 
-import 'components/slideComponent.dart';
-
-void main() => runApp(MyApp());
+void main() {
+  BlocSupervisor.delegate = ItemBlocDelegate();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'TODO APP',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return BlocProvider<ItemBloc>(
+      create: (context) => ItemBloc(),
+      child: MaterialApp(
+        title: 'TODO APP',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.light,
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: HomeScreen(),
       ),
-      home: HomeScreen(),
     );
   }
 }

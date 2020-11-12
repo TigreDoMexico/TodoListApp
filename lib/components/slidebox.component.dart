@@ -6,7 +6,10 @@ class SlideRight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green.withOpacity(opacity),
+      decoration: BoxDecoration(
+        color: Colors.green.withOpacity(opacity),
+        borderRadius: new BorderRadius.circular(10.0),
+      ),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Row(
@@ -38,7 +41,10 @@ class SlideLeft extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red.withOpacity(opacity),
+      decoration: BoxDecoration(
+        color: Colors.red.withOpacity(opacity),
+        borderRadius: new BorderRadius.circular(10.0),
+      ),
       child: Align(
         alignment: Alignment.centerRight,
         child: Row(
